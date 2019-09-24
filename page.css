@@ -64,14 +64,12 @@ body {
 }
 
 .icon,   .material-icons {
-    font-size: 24px;
+    font-size: 18px;
     z-index: 1;
     grid-area: 1 / 1;
 }
 
-
-
-.material-icons {
+.submit-icon {
 	color: white;
 	line-height: 32px;
 	text-align: center;
