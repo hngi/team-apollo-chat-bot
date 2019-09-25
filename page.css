@@ -11,9 +11,10 @@ html {
 }
 
 body {
-    background-image: url("https://images.unsplash.com/photo-1465966756657-fc05dc0a5bf0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80");
+    background-image: url("./images/background.png");
     height: 100%;
-    width: 100% background-position: center;
+    width: 100%;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -32,7 +33,7 @@ body.page-two .page-one {
 .container {
     width: 100%;
     height: 100%;
-    max-width: 100%;
+    max-width: 500px;
 
     padding: 12px;
 }
