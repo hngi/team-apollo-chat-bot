@@ -11,7 +11,7 @@ function welcome(name) {
 
 
 
-function Bot() {
+function bot() {
     let initFuncs = [
         welcome,
 
@@ -30,4 +30,4 @@ function Bot() {
     };
 }
 
-export { Bot };
+export { bot };
