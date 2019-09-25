@@ -1,4 +1,5 @@
-import { Bot } from "./chatbot.js";
+import * from "./chatbot.js";
+import * from "./chat.js";
 
 (function app() {
 	// Elements
