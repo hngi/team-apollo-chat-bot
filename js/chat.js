@@ -1,10 +1,12 @@
-// Elements
-let chatArea = document.querySelector('.chat-area');
+let chatArea;
+let initiallized = false;
 
 // Top Level Variables
 let lastGroup = {};
 
 function addMessage(messages, user = false) {
+	if (!initiallized)
+		throw new Error();
 	// create new group if lastGroup is empty or not for the same 'user'
 	if ( !(lastGroup.user === user) ) {
 		lastGroup.user = user;
@@ -28,4 +30,14 @@ function addMessage(messages, user = false) {
 	}
 }
 
-export { addMessage };
+function init(selctor) {
+	chatArea = document.querySelector(selctor);
+	initiallized = true;
+}
+
+let chat = {
+	init,
+	addMessage,
+};
+
+export { chat };

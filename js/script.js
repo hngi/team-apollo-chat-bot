@@ -1,5 +1,5 @@
 import { Bot } from "./chatbot.js";
-import { addMessage } from "./chat.js";
+import { chat } from "./chat.js";
 
 (function app() {
     // Elements
@@ -7,12 +7,15 @@ import { addMessage } from "./chat.js";
     let nameForm = document.querySelector(".name-form");
     let nameInput = document.querySelector("input[name='name']");
 
+    //initiallization
+    chat.init('.chat-area');
+
     // Event Listeners
     nameForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
         body.className = "page-two";
-        addMessage(['user', "cats", 24]);
+        chat.addMessage(['user', "cats", 24], true);
     })
 
 })();
