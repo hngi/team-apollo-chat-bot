@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    background-image: url("./images/background.png");
+    background-image: url("../images/background.png");
     height: 100%;
     width: 100%;
     background-position: center;
@@ -77,7 +77,6 @@ body.page-two .page-one {
     color: white;
 
     font-size: 14px;
-    font-family: 'Montserrat';
 }
 
 .input {
