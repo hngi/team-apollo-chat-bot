@@ -30,6 +30,25 @@ function addMessage(messages, user = false) {
 	}
 }
 
+function addOptions(options, callback) {
+	let optionGroup = document.createElement('div');
+	optionGroup.className = 'option-group';
+	for (let [key, option] of options.entries()) {
+		let optionDiv = document.createElement('button');
+		optionDiv.className = 'option';
+		optionDiv.innerText = option;
+		optionDiv.value = key;
+
+		optionDiv.addEventListener('click', function(e) {
+			callback(e.target.value, options);
+			chatArea.removeChild(optionGroup);
+		})
+
+		optionGroup.appendChild(optionDiv);
+	}
+	chatArea.appendChild(optionGroup);
+}
+
 function init(selctor) {
 	chatArea = document.querySelector(selctor);
 	initiallized = true;
@@ -38,6 +57,7 @@ function init(selctor) {
 let chat = {
 	init,
 	addMessage,
+	addOptions,
 };
 
 export { chat };
