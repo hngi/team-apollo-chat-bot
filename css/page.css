@@ -25,8 +25,8 @@ body {
 
 }
 
-body.page-one .page-two,
-body.page-two .page-one {
+body.one .page-two,
+body.two .page-one {
     display: none;
 }
 
@@ -34,6 +34,8 @@ body.page-two .page-one {
     width: 100%;
     height: 100%;
     max-width: 500px;
+
+    margin: auto;
 
     padding: 12px;
 }
@@ -43,17 +45,15 @@ body.page-two .page-one {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0;
 }
 
 .page-two {
     background: white;
     width: 100%;
 
-    margin: auto;
-
     display: flex;
     flex-direction: column;
+    padding-top: 0;
 
 }
 

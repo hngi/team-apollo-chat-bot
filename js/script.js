@@ -14,7 +14,7 @@ import { chat } from "./chat.js";
     nameForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        body.className = "page-two";
+        body.className = "two";
         //chat.addMessage(['user', "cats", 24], true);
         //chat.addOptions(["yes", "what?", "lol"], (x, o) => console.log(o[x]) );
     })
