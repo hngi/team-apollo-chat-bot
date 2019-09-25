@@ -10,8 +10,7 @@ import { Bot } from "./chatbot.js";
 	nameForm.addEventListener('submit', function(e) {
 		e.preventDefault();
 		
-		body.classList.add("page-two");
-		body.classList.remove("page-one");
+		body.className = "page-two";
 	})
 
 })();
