@@ -1,0 +1,17 @@
+import { Bot } from "./chatbot.js";
+
+(function app() {
+	// Elements
+	let body = document.querySelector("body");
+	let nameForm = document.querySelector(".name-form");
+	let nameInput = document.querySelector("input[name='name']");
+	
+	// Event Listeners
+	nameForm.addEventListener('submit', function(e) {
+		e.preventDefault();
+		
+		body.classList.add("page-two");
+		body.classList.remove("page-one");
+	})
+
+})();
