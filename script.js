@@ -1,5 +1,5 @@
-import * from "./chatbot.js";
-import * from "./chat.js";
+import { Bot } from "./chatbot.js";
+import { addMessage } from "./chat.js";
 
 (function app() {
     // Elements
@@ -12,6 +12,7 @@ import * from "./chat.js";
         e.preventDefault();
 
         body.className = "page-two";
+        addMessage(['user', "cats", 24]);
     })
 
 })();
