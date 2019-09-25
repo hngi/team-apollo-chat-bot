@@ -15,7 +15,7 @@ import { chat } from "./chat.js";
         e.preventDefault();
 
         body.className = "page-two";
-        chat.addMessage(['user', "cats", 24], true);
+        //chat.addMessage(['user', "cats", 24], true);
     })
 
 })();

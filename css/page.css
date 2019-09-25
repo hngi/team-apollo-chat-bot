@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --green: #219653;
+    --blue: #6490D1;
+    --transwhite: rgba(255, 255, 255, 0.6);
+}
 
 body,
 html {
@@ -105,17 +110,24 @@ button[type='submit'],
     display: block;
     width: 32px;
     height: 32px;
-    background: #219653;
+    background: var(--green);
     border-radius: 5px;
 
     border: 0;
     padding: 0;
     margin: 0;
+
+    transition: .2s;
+}
+
+button[type='submit']:hover,
+.submit-icon:hover {
+    transform: scale(1.1);
 }
 
 .input-field {
     border: none;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--transwhite);
     outline: none;
 
 
@@ -154,7 +166,7 @@ input[name='message'] {
 /* message styles */
 
 .message {
-    background: #6490D1;
+    background: var(--blue);
     margin-bottom: 6px;
     display: inline-block;
     max-width: 75%;
@@ -203,6 +215,26 @@ p {
     font-size: 18px;
     line-height: 25px;
     color: #FFFFFF;
+}
+
+.option-group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.option {
+    background: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 12px;
+    margin-left: 6px;
+    outline: none;
+}
+
+.option:hover {
+    color: white;
+    background: var(--green);
+    border-color: var(--green);
 }
 
 /*
