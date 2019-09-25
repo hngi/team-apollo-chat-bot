@@ -20,11 +20,6 @@ body {
 
 }
 
-body.page-one .page-one,
-body.page-two .page-two {
-    //display: initial;
-}
-
 body.page-one .page-two,
 body.page-two .page-one {
     display: none;
