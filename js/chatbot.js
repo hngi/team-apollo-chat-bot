@@ -2,7 +2,7 @@ function welcome(name) {
     if (!name)
         return { error: "Name not set" }
 
-    let message = `Hi, ${name}. It is nice to talk to you :)`;
+    let message = `Hi, ${name}. It's nice to talk to you :)`;
     return { message };
 }
 
