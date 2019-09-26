@@ -27,6 +27,7 @@ function addMessage(messages, user = false) {
 		messageContainer.className = 'message-container';
 		messageContainer.appendChild(messageDiv);
 		lastGroup.div.appendChild(messageContainer);
+		messageContainer.scrollIntoView();
 	}
 }
 
@@ -47,6 +48,7 @@ function addOptions(options, callback) {
 		optionGroup.appendChild(optionDiv);
 	}
 	chatArea.appendChild(optionGroup);
+	optionGroup.scrollIntoView();
 }
 
 function init(selctor) {

@@ -162,13 +162,12 @@ input[name='message'] {
 }
 
 .chat-area {
-    height: calc(100% - 140px);
+    max-height: calc(100% - 140px);
     padding: 12px;
     overflow: auto;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    margin-top: auto;
+
 }
 
 /* message styles */
