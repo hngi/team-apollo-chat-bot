@@ -35,8 +35,6 @@ body.two .page-one {
     height: 100%;
 
     margin: auto;
-
-    padding: 12px;
 }
 
 .page-one {
@@ -45,6 +43,8 @@ body.two .page-one {
     align-items: center;
     justify-content: center;
     max-width: 500px;
+
+    padding: 12px;
 }
 
 .page-two {
@@ -92,6 +92,11 @@ body.two .page-one {
     grid-template-columns: 48px auto 48px;
     justify-items: center;
     align-items: center;
+}
+
+.message-form {
+    height: 60px;
+    padding: 0 12px 12px;
 }
 
 .icon,
@@ -145,18 +150,21 @@ input[name='message'] {
 }
 
 .chat-header {
-    height: 60px;
+    height: 80px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    padding: 0 12px;
 }
 
 .chat-header h1 {
-    font-size: 32px;
+    font-size: 36px;
     margin: 0;
-    line-height: 60px;
+    line-height: 80px;
 }
 
 .chat-area {
-    flex-grow: 1;
-    padding: 12px 0;
+    height: calc(100% - 140px);
+    padding: 12px;
+    overflow: auto;
 
     display: flex;
     flex-direction: column;
