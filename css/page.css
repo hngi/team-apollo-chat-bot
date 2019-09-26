@@ -49,11 +49,10 @@ body.two .page-one {
 
 .page-two {
     background: white;
-    width: 100%;
+    width: 500px;
 
     display: flex;
     flex-direction: column;
-    padding-top: 0;
 
 }
 
@@ -96,7 +95,7 @@ body.two .page-one {
 
 .message-form {
     height: 60px;
-    padding: 0 12px 12px;
+    padding: 0 16px 12px;
 }
 
 .icon,
@@ -117,6 +116,7 @@ button[type='submit'],
     height: 32px;
     background: var(--green);
     border-radius: 5px;
+    outline: none;
 
     border: 0;
     padding: 0;
@@ -150,20 +150,20 @@ input[name='message'] {
 }
 
 .chat-header {
-    height: 80px;
+    height: 60px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    padding: 0 12px;
+    padding: 0 16px;
 }
 
 .chat-header h1 {
-    font-size: 36px;
+    font-size: 24px;
     margin: 0;
-    line-height: 80px;
+    line-height: 60px;
 }
 
 .chat-area {
-    max-height: calc(100% - 140px);
-    padding: 12px;
+    max-height: calc(100% - 120px);
+    padding: 16px;
     overflow: auto;
 
     margin-top: auto;
