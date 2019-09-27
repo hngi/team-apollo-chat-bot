@@ -41,9 +41,10 @@ function addOptions(options, callback) {
 		optionDiv.value = key;
 
 		optionDiv.addEventListener('click', function(e) {
-			callback(e.target.value, options);
 			chatArea.removeChild(optionGroup);
-		})
+			addMessages([options[e.target.value]], true);
+			callback(e.target.value, options);
+		});
 
 		optionGroup.appendChild(optionDiv);
 	}
