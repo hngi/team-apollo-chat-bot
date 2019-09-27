@@ -14,7 +14,7 @@ function welcome(name) {
 
     savedName = name;
     messages[0] = `Hi, ${name}. It's nice to talk to you :)`;
-    messages[1] = 'Do you mind if I ask you a few questions?';
+    messages[1] = 'Can I ask you a few questions?';
     let options = ["Yes", "No"];
 
     return { messages, options, };
@@ -114,7 +114,7 @@ function purposeResponse(index, options) {
 }
 
 function talk(message) {
-    return { messages: ["I'm repeating your message", message] };
+    return { messages: ["I'm repeating your message (yes, I'm a parrot)", message] };
 }
 
 function takeFeedback(message) {
