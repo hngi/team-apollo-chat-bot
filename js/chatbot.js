@@ -12,6 +12,8 @@ Type /help to see this message again
 Type /feedback to give some feedback
 Type /reload to start from the very beginning [it might surprise you that we can even turn back time ;) ]`;
 
+let counter = 0;
+
 function welcome(name) {
 
     if (!name)
@@ -134,6 +136,9 @@ function talk(message) {
 			case '/reload':
 				setTimeout(() => location.reload() , 1000);
 				return { messages: ["Reloading in a second", "I'm about to be so new and shiny 😍"] };
+			case '/feedback':
+				counter = 7;
+				return { messages: ["Awesome, we'd love to hear what you have to say"] };
 		}
 	}
     return { messages: ["I'm repeating your message.", "(Yes, I'm a parrot).", message] };
@@ -141,8 +146,9 @@ function talk(message) {
 
 function takeFeedback(message) {
     if (skip)
+    	skip = false;
         return talk(message);
-
+        
     return { 
 			messages: [
 				"We're always looking for ways to improve. Your feedback is much appreciated.",
@@ -165,14 +171,13 @@ function bot() {
     ];
 
     return {
-        counter: 0,
 
         next(...args) {
-            if (this.counter >= initFuncs.length)
+            if (counter >= initFuncs.length)
                 return talk(...args);
 
 
-            return initFuncs[this.counter++](...args);
+            return initFuncs[counter++](...args);
         }
     };
 }
