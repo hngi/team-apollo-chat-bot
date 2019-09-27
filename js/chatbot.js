@@ -145,9 +145,10 @@ function talk(message) {
 }
 
 function takeFeedback(message) {
-    if (skip)
+    if (skip) {
     	skip = false;
         return talk(message);
+    }
         
     return { 
 			messages: [
