@@ -6,15 +6,21 @@ let purpose;
 let skipObject = { messages: [], next: true };
 let errorObject = { messages: ["Oops! Something went wrong. We'll fix it quick."] };
 
+let helpMessage = `Here are some commands you might find helpful.
+
+Type /help to see this message again
+Type /feedback to give some feedback
+Type /reload to start from the very beginning [it might surprise that we can even turn back time ;) ]`;
+
 function welcome(name) {
-    let messages = [];
 
     if (!name)
         return { messages: ["Name not set"] }
 
     savedName = name;
-    messages[0] = `Hi, ${savedName}. It's nice to meet you.`;
-    messages[1] = 'Can I ask you a few questions? Just some demographic information before we get started.';
+    let messages = [`Hi, ${savedName}. It's nice to meet you.`,
+    	helpMessage,
+    	'Can I ask you a few questions? Just some demographic information before we get started.'];
     let options = ["Yeah, sure.", "No"];
 
     return { messages, options, };
@@ -120,6 +126,13 @@ function purposeResponse(index, options) {
 }
 
 function talk(message) {
+	message = message.trim();
+	if (message.split('')[0] == '/') {
+		switch (message) {
+			case '/help':
+				return { messages: [ helpMessage ] };
+		}
+	}
     return { messages: ["I'm repeating your message.", "(Yes, I'm a parrot).", message] };
 }
 
