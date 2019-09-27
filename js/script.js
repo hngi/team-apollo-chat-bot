@@ -13,14 +13,39 @@ import { chat } from "./chat.js";
     chat.init('.chat-area');
     let chatbot = bot();
 
+    // Functions
+    function pageTwo() {
+        body.className = "two";
+    }
+
+    function questionLoop(...args) {
+        messageInput.disabled = true;
+
+        let response = chatbot.next(...args);
+        chat.addMessages(response.messages);
+        if (response.options) {
+            chat.addOptions(response.options, questionLoop);
+            return;
+        }
+
+        if (response.next) {
+            questionLoop();
+        } else {
+            messageInput.disabled = false;
+        }
+    }
+
+
+
     // Event Listeners
     nameForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        body.className = "two";
-        let { message } = chatbot.next(nameInput.value);
-        chat.addMessage([message]);
-        //chat.addMessage(['user', "cats", 24], true);
+        pageTwo();
+
+        questionLoop(nameInput.value);
+
+        //chat.addMessages(['user', "cats", 24], true);
         //chat.addOptions(["yes", "what?", "lol"], (x, o) => console.log(o[x]) );
     });
 

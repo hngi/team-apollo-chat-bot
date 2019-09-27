@@ -1,20 +1,37 @@
-function welcome(name) {
-    if (!name)
-        return { error: "Name not set" }
+let savedName;
 
-    let message = `Hi, ${name}. It's nice to talk to you :)`;
-    return { message };
+function welcome(name) {
+    let messages = [];
+
+    if (!name)
+        return { messages: ["Name not set"] }
+
+    savedName = name;
+    messages[0] = `Hi, ${name}. It's nice to talk to you :)`;
+    messages[1] = 'Do you mind if I ask you a few questions?';
+    let options = ["Yes", "No"];
+
+    return { messages, options, };
 }
 
-
-
-
-
+function questionOne(index, options) {
+    if (options[index] == 'No') {
+        let messages = ["Ok, that's fine"];
+        return { messages };
+    } else if (options[index] == 'Yes') {
+        let messages = ["Yay!", "Ok, first, what's your gender?"];
+        let options = ["Male", "Female", "Other", "Rather not say"];
+        return { messages, options, };
+    } else {
+        return { messages: ["Ok, something went wrong. We'll fix it quick."] };
+    }
+        
+}
 
 function bot() {
     let initFuncs = [
         welcome,
-
+        questionOne,
     ];
 
     return {
@@ -22,7 +39,7 @@ function bot() {
 
         next(...args) {
             if (this.counter >= initFuncs.length)
-                return { message: "No message" };
+                return { messages: ["No message"] };
 
 
             return initFuncs[this.counter++](...args);

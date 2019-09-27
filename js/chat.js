@@ -4,7 +4,7 @@ let initiallized = false;
 // Top Level Variables
 let lastGroup = {};
 
-function addMessage(messages, user = false) {
+function addMessages(messages, user = false) {
 	if (!initiallized)
 		throw new Error();
 	// create new group if lastGroup is empty or not for the same 'user'
@@ -58,7 +58,7 @@ function init(selctor) {
 
 let chat = {
 	init,
-	addMessage,
+	addMessages,
 	addOptions,
 };
 
