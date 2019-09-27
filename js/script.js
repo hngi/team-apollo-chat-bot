@@ -19,7 +19,6 @@ import { chat } from "./chat.js";
     }
 
     function getTextCallback() {
-        
         messageForm.removeEventListener('click', getTextCallback);
     }
 
