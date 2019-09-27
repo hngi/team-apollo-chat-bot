@@ -4,7 +4,7 @@ let initiallized = false;
 // Top Level Variables
 let lastGroup = {};
 
-function addMessage(messages, user = false) {
+function addMessages(messages, user = false) {
 	if (!initiallized)
 		throw new Error();
 	// create new group if lastGroup is empty or not for the same 'user'
@@ -41,9 +41,10 @@ function addOptions(options, callback) {
 		optionDiv.value = key;
 
 		optionDiv.addEventListener('click', function(e) {
-			callback(e.target.value, options);
 			chatArea.removeChild(optionGroup);
-		})
+			addMessages([options[e.target.value]], true);
+			callback(e.target.value, options);
+		});
 
 		optionGroup.appendChild(optionDiv);
 	}
@@ -58,7 +59,7 @@ function init(selctor) {
 
 let chat = {
 	init,
-	addMessage,
+	addMessages,
 	addOptions,
 };
 

@@ -5,6 +5,7 @@
 :root {
     --green: #219653;
     --blue: #6490D1;
+    --gray: #5a6e8c;
     --transwhite: rgba(255, 255, 255, 0.6);
 }
 
@@ -175,7 +176,7 @@ input[name='message'] {
 /* message styles */
 
 .message {
-    background: var(--blue);
+    background: var(--gray);
     margin-bottom: 6px;
     display: inline-block;
     max-width: 75%;
@@ -188,6 +189,7 @@ input[name='message'] {
 }
 
 .message-group-user .message-container .message {
+    background: var(--blue);
     border-radius: 0;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
