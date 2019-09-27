@@ -113,8 +113,7 @@ function purposeResponse(index, options) {
             return {
 							messages: [
 								`Hang on ${savedName}, an agent will be with you shortly.`,
-								"PS: Not really, this is just a demo & you've reached the end.",
-								"You may reload to explore other conversation paths. Or continue chatting with the parrot."
+								"PS: Not really, this is just a demo.",
 							]
 						};
         case 'Feedback':
@@ -153,8 +152,6 @@ function takeFeedback(message) {
     return { 
 			messages: [
 				"We're always looking for ways to improve. Your feedback is much appreciated.",
-				"Thank you for stopping by. Ciao.",
-				"PS: You've reached the end of this path. You may reload to explore other conversation paths. Or continue to chat with the parrot."
 			]
 		};
 }
