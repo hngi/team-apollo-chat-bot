@@ -41,9 +41,9 @@ function responseOne(index, options) {
     gender = options[index];
     switch (options[index]) {
         case 'Male':
-            return { messages: ['Big boy :)'], next: true };
+            return { messages: ['Hey bro :)'], next: true };
         case 'Female':
-            return { messages: ['Hey Babe :)'], next: true };
+            return { messages: ['Hey sis :)'], next: true };
         case 'Other':
             return { messages: ['Mood! 100%.'], next: true };
         case 'Rather not say':
@@ -59,7 +59,7 @@ function questionTwo() {
         return skipObject;
     }
 
-    let messages = ["Which age range do you fall into?"];
+    let messages = ["What age range do you fall into?"];
     let options = ['0-12', '13-19', '20-29', '30-50', '51-above'];
     return { messages, options, }
 }
