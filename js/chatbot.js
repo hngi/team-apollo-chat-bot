@@ -1,5 +1,9 @@
 let savedName;
 let gender;
+let ageRange;
+let skip;
+let purpose;
+let skipObject = { messages: [], next: true };
 let errorObject = { messages: ["Ok, something went wrong. We'll fix it quick."] };
 
 function welcome(name) {
@@ -31,7 +35,8 @@ function questionOne(index, options) {
 
 function responseOne(index, options) {
     if (!index) {
-        return { messages: [] }
+        skip = true;
+        return skipObject;
     }
     gender = options[index];
     switch (options[index]) {
@@ -49,6 +54,11 @@ function responseOne(index, options) {
 }
 
 function questionTwo() {
+    if (skip) {
+        skip = false;
+        return skipObject;
+    }
+
     let messages = ["Which age range do you fall in?"];
     let options = ['0-12', '13-19', '20-29', '30-50', '51-above'];
     return { messages, options, }
@@ -56,8 +66,9 @@ function questionTwo() {
 
 function responseTwo(index, options) {
     if (!index) {
-        return errorObject;
+        return skipObject;
     }
+    ageRange = options[index];
     switch (options[index]) {
         case '0-12':
             return { messages: ['Give your parent back their phone', 'Just kidding ;)'], next: true };
@@ -76,6 +87,45 @@ function responseTwo(index, options) {
     }
 }
 
+function askPurpose() {
+    let messages = ["Why are you here?"];
+    let options = ['For support', 'To give feedback', 'To talk'];
+    return { messages, options, }
+}
+
+function purposeResponse(index, options) {
+    if (!index) {
+        return errorObject;
+    }
+
+    purpose = options[index];
+    switch (options[index]) {
+        case 'For support':
+            skip = true;
+            return { messages: ['An agent will be with you shortly. (Not really, this is just a demo)'] };
+        case 'To give feedback':
+            return { messages: ["What's your feedback?"] };
+        case 'To talk':
+            skip = true;
+            return { messages: ['Go ahead :)'] };
+        default:
+            return errorObject;
+    }
+}
+
+function talk(message) {
+    return { messages: ["I'm repeating your message", message] };
+}
+
+function takeFeedback(message) {
+    if (skip)
+        return talk(message);
+
+    return { messages: ["Your feedback is appreciated"] };
+}
+
+
+
 function bot() {
     let initFuncs = [
         welcome,
@@ -83,6 +133,9 @@ function bot() {
         responseOne,
         questionTwo,
         responseTwo,
+        askPurpose,
+        purposeResponse,
+        takeFeedback,
     ];
 
     return {
@@ -90,7 +143,7 @@ function bot() {
 
         next(...args) {
             if (this.counter >= initFuncs.length)
-                return { messages: ["No message"] };
+                return talk(...args);
 
 
             return initFuncs[this.counter++](...args);

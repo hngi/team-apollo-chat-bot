@@ -18,11 +18,17 @@ import { chat } from "./chat.js";
         body.className = "two";
     }
 
+    function getTextCallback() {
+        
+        messageForm.removeEventListener('click', getTextCallback);
+    }
+
     function questionLoop(...args) {
         messageInput.disabled = true;
 
         let response = chatbot.next(...args);
         chat.addMessages(response.messages);
+
         if (response.options) {
             chat.addOptions(response.options, questionLoop);
             return;
@@ -52,8 +58,10 @@ import { chat } from "./chat.js";
     messageForm.addEventListener('submit', function(e) {
     	e.preventDefault();
 
-    	chat.addMessage([messageInput.value], true);
+    	chat.addMessages([messageInput.value], true);
+        questionLoop(messageInput.value);
     	messageForm.reset();
+        messageInput.focus();
     });
 
 })();
