@@ -10,7 +10,7 @@ let helpMessage = `Here are some commands you might find helpful.
 
 Type /help to see this message again
 Type /feedback to give some feedback
-Type /reload to start from the very beginning [it might surprise that we can even turn back time ;) ]`;
+Type /reload to start from the very beginning [it might surprise you that we can even turn back time ;) ]`;
 
 function welcome(name) {
 
@@ -131,6 +131,9 @@ function talk(message) {
 		switch (message) {
 			case '/help':
 				return { messages: [ helpMessage ] };
+			case '/reload':
+				setTimeout(() => location.reload() , 1000);
+				return { messages: ["Reloading in a second", "I'm about to be so new and shiny 😍"] };
 		}
 	}
     return { messages: ["I'm repeating your message.", "(Yes, I'm a parrot).", message] };
