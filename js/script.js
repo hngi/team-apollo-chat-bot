@@ -18,10 +18,6 @@ import { chat } from "./chat.js";
         body.className = "two";
     }
 
-    function getTextCallback() {
-        messageForm.removeEventListener('click', getTextCallback);
-    }
-
     function questionLoop(...args) {
         messageInput.disabled = true;
 
@@ -40,7 +36,18 @@ import { chat } from "./chat.js";
         }
     }
 
+    if (document.cookie.split(';').filter((item) => item.trim().startsWith('name=')).length) {
+        pageTwo();
 
+        let temp = document.cookie.split('; ');
+        let result = {};
+        for (let i = 0; i < temp.length; i++) {
+            let cur = temp[i].split('=');
+            result[cur[0]] = cur[1];
+        }
+
+        questionLoop(result);
+    }
 
     // Event Listeners
     nameForm.addEventListener('submit', function(e) {

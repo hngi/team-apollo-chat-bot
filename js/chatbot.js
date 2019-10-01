@@ -5,12 +5,14 @@ let skip;
 let purpose;
 let skipObject = { messages: [], next: true };
 let errorObject = { messages: ["Oops! Something went wrong. We'll fix it quick."] };
+let noMessages;
 
 let helpMessage = `Here are some commands you might find helpful.
 
 Type /help to see this message again
 Type /feedback to give some feedback
-Type /reload to start from the very beginning [it might surprise you that we can even turn back time ;) ]`;
+Type /reload to start from the very beginning [it might surprise you that we can even turn back time ;) ]
+Type /clear to start from even before the beginning (that is, you get to enter a new name!) [see, time travel]`;
 
 let counter = 0;
 
@@ -19,7 +21,22 @@ function welcome(name) {
     if (!name)
         return { messages: ["Name not set"] }
 
+    if (typeof name == 'object') {
+        savedName = name.name;
+        gender = name.gender;
+        ageRange = name.ageRange;
+
+        noMessages = true;
+
+        let messages = [`Welcome back, ${savedName}. Glad to have you back.`,
+            helpMessage,
+        ];
+
+        return { messages, next: true };
+    }
+
     savedName = name;
+    document.cookie = `name=${savedName}; expires=Sat, 19 Jan 2030 12:00:00 UTC; path=/`; 
     let messages = [`Hi, ${savedName}. It's nice to meet you.`,
     	helpMessage,
     	'Can I ask you a few questions? Just some demographic information before we get started.'];
@@ -28,8 +45,10 @@ function welcome(name) {
     return { messages, options, };
 }
 
-function questionOne(index, options) {
+function questionOne(index = 1, options =  ["Yeah, sure.", "No"]) {
     if (options[index] == 'No') {
+        if (noMessages)
+            return skipObject;
         let messages = ["Ok, that's fine. Moving on."];
         return { messages, next: true };
     } else if (options[index] == 'Yeah, sure.') {
@@ -47,6 +66,7 @@ function responseOne(index, options) {
         return skipObject;
     }
     gender = options[index];
+    document.cookie = `gender=${gender}; expires=Sat, 19 Jan 2030 12:00:00 UTC; path=/`; 
     switch (options[index]) {
         case 'Male':
             return { messages: ['Hey bro :)'], next: true };
@@ -77,6 +97,7 @@ function responseTwo(index, options) {
         return skipObject;
     }
     ageRange = options[index];
+    document.cookie = `ageRange=${ageRange}; expires=Sat, 19 Jan 2030 12:00:00 UTC; path=/`; 
     switch (options[index]) {
         case '0-12':
             return { messages: ['Give your mum back her phone.', 'Just kidding ;)'], next: true };
@@ -132,6 +153,10 @@ function talk(message) {
 		switch (message) {
 			case '/help':
 				return { messages: [ helpMessage ] };
+            case '/clear':
+                document.cookie = `name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+                document.cookie = `gender=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+                document.cookie = `ageRange=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
 			case '/reload':
 				setTimeout(() => location.reload() , 1000);
 				return { messages: ["Reloading in a second", "I'm about to be so new and shiny 😍"] };
