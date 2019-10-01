@@ -152,6 +152,10 @@ function talk(message) {
 		switch (message) {
 			case '/help':
 				return { messages: [ helpMessage ] };
+            case '/clear':
+                document.cookie = `name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+                document.cookie = `gender=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+                document.cookie = `ageRange=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
 			case '/reload':
 				setTimeout(() => location.reload() , 1000);
 				return { messages: ["Reloading in a second", "I'm about to be so new and shiny 😍"] };
