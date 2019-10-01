@@ -46,7 +46,7 @@ import { chat } from "./chat.js";
             result[cur[0]] = cur[1];
         }
 
-        questionLoop(resut);
+        questionLoop(result);
     }
 
     // Event Listeners
