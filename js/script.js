@@ -36,7 +36,9 @@ import { chat } from "./chat.js";
         }
     }
 
-
+    // if (document.cookie.split(';').filter((item) => item.trim().startsWith('name=')).length) {
+    //     console.log('The cookie "reader" exists (ES6)');
+    // }
 
     // Event Listeners
     nameForm.addEventListener('submit', function(e) {
