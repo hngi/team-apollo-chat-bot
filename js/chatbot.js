@@ -11,7 +11,8 @@ let helpMessage = `Here are some commands you might find helpful.
 
 Type /help to see this message again
 Type /feedback to give some feedback
-Type /reload to start from the very beginning [it might surprise you that we can even turn back time ;) ]`;
+Type /reload to start from the very beginning [it might surprise you that we can even turn back time ;) ]
+Type /clear to start from even before the beginning (that is, you get to enter a new name!) [see, time travel]`;
 
 let counter = 0;
 
