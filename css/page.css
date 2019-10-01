@@ -203,13 +203,6 @@ input[name='message'] {
     border-top-right-radius: 5px;
 }
 
-.message-group::after {
-    content: "Today - 12:35 pm";
-    font-size: 12px;
-    display: block;
-    margin-bottom: 6px;
-}
-
 .message-group-user::after {
     text-align: right;
 }
