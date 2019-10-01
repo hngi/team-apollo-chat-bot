@@ -5,6 +5,7 @@ let skip;
 let purpose;
 let skipObject = { messages: [], next: true };
 let errorObject = { messages: ["Oops! Something went wrong. We'll fix it quick."] };
+let noMessages;
 
 let helpMessage = `Here are some commands you might find helpful.
 
@@ -19,6 +20,20 @@ function welcome(name) {
     if (!name)
         return { messages: ["Name not set"] }
 
+    if (typeof name == 'object') {
+        savedName = name.name;
+        gender = name.gender;
+        ageRange = name.ageRange;
+
+        noMessages = true;
+
+        let messages = [`Welcome back, ${savedName}. Glad to have you back.`,
+            helpMessage,
+        ];
+
+        return { messages, next: true };
+    }
+
     savedName = name;
     document.cookie = `name=${savedName}; expires=Sat, 19 Jan 2030 12:00:00 UTC; path=/`; 
     let messages = [`Hi, ${savedName}. It's nice to meet you.`,
@@ -29,8 +44,10 @@ function welcome(name) {
     return { messages, options, };
 }
 
-function questionOne(index, options) {
+function questionOne(index = 1, options =  ["Yeah, sure.", "No"]) {
     if (options[index] == 'No') {
+        if (noMessages)
+            return skipObject;
         let messages = ["Ok, that's fine. Moving on."];
         return { messages, next: true };
     } else if (options[index] == 'Yeah, sure.') {
