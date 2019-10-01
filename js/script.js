@@ -36,9 +36,18 @@ import { chat } from "./chat.js";
         }
     }
 
-    // if (document.cookie.split(';').filter((item) => item.trim().startsWith('name=')).length) {
-    //     console.log('The cookie "reader" exists (ES6)');
-    // }
+    if (document.cookie.split(';').filter((item) => item.trim().startsWith('name=')).length) {
+        pageTwo();
+
+        let temp = document.cookie.split('; ');
+        let result = {};
+        for (let i = 0; i < temp.length; i++) {
+            let cur = temp[i].split('=');
+            result[cur[0]] = cur[1];
+        }
+
+        questionLoop(resut);
+    }
 
     // Event Listeners
     nameForm.addEventListener('submit', function(e) {
