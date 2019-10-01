@@ -18,10 +18,6 @@ import { chat } from "./chat.js";
         body.className = "two";
     }
 
-    function getTextCallback() {
-        messageForm.removeEventListener('click', getTextCallback);
-    }
-
     function questionLoop(...args) {
         messageInput.disabled = true;
 
