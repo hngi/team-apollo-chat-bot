@@ -11,8 +11,8 @@ let helpMessage = `Here are some commands you might find helpful.
 
 Type /help to see this message again
 Type /feedback to give some feedback
-Type /reload to start from the very beginning [it might surprise you that we can even turn back time ;) ]
-Type /clear to start from even before the beginning (that is, you get to enter a new name!) [see, time travel]`;
+Type /clear-chat to restart this conversation. [It might surprise you that we can even turn back time ;) ]
+Type /clear-data to start from even before the beginning (that is, the current user data is cleared, and you get to enter a new name!) [See? Time travel!]`;
 
 let counter = 0;
 
@@ -153,13 +153,15 @@ function talk(message) {
 		switch (message) {
 			case '/help':
 				return { messages: [ helpMessage ] };
-            case '/clear':
+            case '/clear-data':
                 document.cookie = `name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
                 document.cookie = `gender=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
                 document.cookie = `ageRange=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
-			case '/reload':
-				setTimeout(() => location.reload() , 1000);
-				return { messages: ["Reloading in a second", "I'm about to be so new and shiny 😍"] };
+		setTimeout(() => location.reload() , 1500);
+		return { messages: ["Reloading in a second", "I'm about to be so new and shiny 😍"] };
+            case '/clear-chat':
+              return { messages: ["This functionality is still being developed. Please use '/clear-data' instead."] };
+
 			case '/feedback':
 				counter = 7;
 				return { messages: ["Awesome, we'd love to hear what you have to say"] };
