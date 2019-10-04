@@ -1,4 +1,4 @@
-let savedName, gender, ageRange, skipDemographic,
+let savedName, gender, ageRange, skipDemographic, skipFeedback,
 		skipObject = {
 			messages: [],
 			next: true 
@@ -189,25 +189,33 @@ function purposeResponse(index) {
 
 	let purpose = options[index];
 	switch (purpose) {
-		case 'Product support':
-			skip = true;
+		case 'Product support': {
+			skipFeedback = true;
 			return {
 				messages: [
 					`Hang on ${savedName}, an agent will be with you shortly.`,
 					"PS: Not really, this is just a demo.",
 				]
 			};
-		case 'Feedback':
+		}
+		case 'Feedback': {
 			return { messages: ["Awesome! Team Apollo loves feedback. Please tell us how we can improve."] };
-		case 'Just wanna talk':
-			skip = true;
+		}
+		case 'Just wanna talk': {
+			skipFeedback = true;
 			return { messages: ['Sure pal. Go ahead :)'] };
+		}
 		default:
 			return errorObject;
 	}
 }
 
-function takeFeedback() {     
+function takeFeedback() {
+	if (skipFeedback) { // User came for product support or just to talk.
+		skipFeedback = false;
+		return skipObject;
+	}
+
 	return { 
 		messages: [
 			"We're always looking for ways to improve. Your feedback is much appreciated.",

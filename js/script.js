@@ -21,7 +21,6 @@ let unreadTop;
  */
 function addMessages(messages, user = false) {
 	// Create new group if lastGroup is empty or not for the same 'user'
-	console.log(lastGroup || false);
 	if ( !(lastGroup.user === user) ) {
 		lastGroup.user = user;
 		lastGroup.div = document.createElement('div');
